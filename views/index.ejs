@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapoligon</title>
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+</head>
+<body>
+    <div id ="my-map" style = "width:800px; height:600px;"></div>
+
+</body>
+<script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script>
+    // Creating map options
+    var mapOptions = {
+    center: [17.385044, 78.486671],
+    zoom: 10
+    }
+    
+    // Creating a map object
+    var map = new L.map('map', mapOptions);
+    
+    // Creating a Layer object
+    var layer = new     L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+    
+    // Adding layer to the map
+    map.addLayer(layer);
+    </script>
+</html>
