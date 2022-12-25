@@ -18,7 +18,7 @@
 
 // Marcadores e Poligonos
     var pontos = []
-    var markLayer = []
+    var markLayer = []// [L.marker({"lat": 0, "lng": 0}).addTo(map)]
     var polygonLayer
     var centralMarker
 
@@ -40,7 +40,11 @@
         }
         
     }
-    
+/*
+    function onMarkClick(c) {
+        console.log(c)
+    }
+    */
 
     function pontoCent(pts) {
         let x = 0
@@ -79,8 +83,28 @@
         
     }
 
+    function polSave(){
+        let poldata = new XMLHttpRequest();
+        let data = {"lala":"jsdfguysd"}
+
+        poldata.open('POST', 'http://localhost:1434/map/npol', true)
+
+        poldata.setRequestHeader("Content-type", "application/json;charset=UTF-8")
+
+        poldata.send(JSON.stringify(data));
+
+        console.log("show")
+    }
+
     // Eventos
     map.on('click', onMapClick);
 
+   // markLayer[0].on('click', onMarkClick);
+
+   /* markLayer.on('click', function(e) {
+        map.removeLayer(this);
+      });/*/
+
     document.getElementById("btei").addEventListener("click", novoPoligono);
     document.getElementById("bdel").addEventListener("click", del);
+    document.getElementById("bsav").addEventListener("click", polSave);
