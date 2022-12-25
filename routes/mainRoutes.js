@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const Plg = require('../models/poligono')
 
 // Rotas GET
     // Index 
@@ -14,6 +15,13 @@ const router = express.Router()
 
     router.post('/map/npol', (req, res) => {
         console.log(req.body)
+        const nPlg = new Plg({
+            pontos: req.body
+        })
+
+        Plg.create({
+            pontos: req.body
+        })
         res.status(200)
         res.send('save')
     })

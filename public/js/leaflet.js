@@ -91,7 +91,7 @@
 
         poldata.setRequestHeader("Content-type", "application/json;charset=UTF-8")
 
-        poldata.send(JSON.stringify(data));
+        poldata.send(JSON.stringify(pontos));
 
         console.log("show")
     }

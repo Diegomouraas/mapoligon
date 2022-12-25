@@ -1,3 +1,4 @@
+const { Model } = require('sequelize')
 const db = require('./msqlConf')
 
 const Plg = db.sequelize.define('plg', {
@@ -12,6 +13,7 @@ const Plg = db.sequelize.define('plg', {
     }
 })
 
+module.exports = Plg
 /*Plg.sync({force:true})
     .then(() => console.log('Tabela Plg Criada com sucesso!'))
     .catch(err => console.log('Erro ao Criar a tabela Plg: ', err))
