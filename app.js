@@ -2,6 +2,7 @@
 const express = require('express')
 const rotas = require('./routes/mainRoutes')
 const app = express()
+const bodyParser = require('body-parser')
 
 // View Engine
     app.set('view engine', 'ejs')
@@ -9,6 +10,10 @@ const app = express()
 
 // middlewares
     app.use(express.static("public"))
+
+// bodyParser
+    app.use(bodyParser.urlencoded({ extended: true }))
+    app.use(bodyParser.json())
 
 // Rotas
     app.use('/', rotas)

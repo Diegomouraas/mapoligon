@@ -63,6 +63,7 @@
 
     function novoPoligono(){
         nPoligono = !nPoligono;
+        console.log(pontos)
         
     }
 
