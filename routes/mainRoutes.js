@@ -5,7 +5,14 @@ const Plg = require('../models/poligono')
 // Rotas GET
     // Index 
     router.get('/', (req, res) => {
-        res.render('index')
+        Plg.findAll({attributes: ['id', 'pontos', 'createdAt', 'updatedAt']}).then((poligons) => {
+            res.render('index', {poligons: poligons}) // poligons})
+            
+        }).catch((erro) => {
+            console.log(erro)
+            res.render('index', {poligons: null})
+        })
+        
     })
 
     // Map 
