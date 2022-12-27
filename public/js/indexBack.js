@@ -15,11 +15,22 @@ var googleSat = new L.TileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={
 
 googleSat.addTo(map);
 
-var plgObj = window.plgs
-//var poligonos = []
 var polygonLayer
+var plgGroup = L.featureGroup().addTo(map) 
 
-plgObj.forEach((plg) => {
-    polygonLayer = L.polygon(plg.pontos).addTo(map);
+var plgObj
+
+const url = 'http://localhost:1434/plgs'
+fetch(url).then((res) => {
+    let dat = res.json()
+    return dat
+}).then((data) => {
+    plgObj = data
+
+    plgObj.forEach((plg) => {
+        polygonLayer = L.polygon(plg.pontos).addTo(plgGroup);
+    })
 })
+
+//map.removeLayer(plgGroup)
 

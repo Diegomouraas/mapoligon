@@ -12,10 +12,41 @@
    <body>
       <%- include ('frags/nav.ejs') %>
 
-      <div id = "map" style = "width: 90%; height:80vh; float: right"></div>
-      <button id = "btei" type="button" class="btn btn-primary">Novo Poligono</button>
-      <button id = "bdel" type="button" class="btn btn-primary">Deletar</button>
-      <button id = "bsav" type="button" class="btn btn-primary">Salvar</button>
+      <div id = "map" style = "width: 75%; height:80vh; float: right"></div>
+
+      <div id = "painel_edicao" style = "width: 25%; float: left">
+         <button id = "btei" type="button" class="btn btn-primary">Novo Poligono</button>
+         <button id = "bdel" type="button" class="btn btn-primary">Deletar</button>
+         <div class="input-group">
+            <select class="custom-select" id="vellim">
+               <option selected>Limite de Velocidade</option>
+               <option value="10">10km/h</option>
+               <option value="20">20km/h</option>
+               <option value="30">30km/h</option>
+               <option value="40">40km/h</option>
+               <option value="50">50km/h</option>
+               <option value="60">60km/h</option>
+               <option value="70">70km/h</option>
+               <option value="80">80km/h</option>
+               <option value="90">90km/h</option>
+               <option value="100">100km/h</option>
+               <option value="110">110km/h</option>
+               <option value="120">120km/h</option>
+               <option value="130">130km/h</option>
+               <option value="140">140km/h</option>
+            </select>
+            <div class="input-group-append">
+               <button id = "bsav" class="btn btn-outline-secondary" type="button">Salvar Poligono</button>
+            </div>
+         </div>
+      </div>
+
+      <div class="text-bg-dark">
+         <div class="container-fluid">
+
+         </div>
+      </div>
+      
       
       
 

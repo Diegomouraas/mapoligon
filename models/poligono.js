@@ -10,6 +10,12 @@ const Plg = db.sequelize.define('plg', {
 
     pontos: {
         type: db.Sequelize.JSON
+    },
+
+    vellim: {
+        type: db.Sequelize.INTEGER,
+        require: true,
+        defaultValue: 140
     }
 })
 

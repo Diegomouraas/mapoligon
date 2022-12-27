@@ -24,6 +24,8 @@
 
     var nPoligono = false;
 
+    var limiteDeVelocidade
+
     function onMapClick(e) {
         if (nPoligono) {
             pontos.push({"lat":e.latlng.lat, "lng":e.latlng.lng});
@@ -85,19 +87,31 @@
 
     function polSave(){
         let poldata = new XMLHttpRequest();
-        let data = {"lala":"jsdfguysd"}
+        let data = []
+
+        data.push({
+            "vellim": limiteDeVelocidade
+        })
+
+        data.push(pontos);
 
         poldata.open('POST', 'http://localhost:1434/map/npol', true)
 
         poldata.setRequestHeader("Content-type", "application/json;charset=UTF-8")
 
-        poldata.send(JSON.stringify(pontos));
+        poldata.send(JSON.stringify(data));
 
         console.log("show")
     }
 
     // Eventos
     map.on('click', onMapClick);
+
+    const velLim = document.getElementById('vellim');
+    velLim.addEventListener('change', (evento) => {
+        limiteDeVelocidade = evento.target.value;
+        console.log(limiteDeVelocidade);
+    });
 
    // markLayer[0].on('click', onMarkClick);
 

@@ -5,12 +5,23 @@ const Plg = require('../models/poligono')
 // Rotas GET
     // Index 
     router.get('/', (req, res) => {
-        Plg.findAll({attributes: ['id', 'pontos', 'createdAt', 'updatedAt']}).then((poligons) => {
-            res.render('index', {poligons: poligons}) // poligons})
+        Plg.findAll().then((poligons) => {
+            res.render('index', {poligons: poligons})
             
         }).catch((erro) => {
             console.log(erro)
             res.render('index', {poligons: null})
+        })
+        
+    })
+
+    router.get('/plgs', (req, res) => {
+        Plg.findAll().then((poligons) => {
+            res.send(JSON.stringify(poligons))
+            
+        }).catch((erro) => {
+            console.log(erro)
+            res.status(200).json({})
         })
         
     })
@@ -22,12 +33,10 @@ const Plg = require('../models/poligono')
 
     router.post('/map/npol', (req, res) => {
         console.log(req.body)
-        const nPlg = new Plg({
-            pontos: req.body
-        })
 
         Plg.create({
-            pontos: req.body
+            pontos: req.body[1],
+            vellim: req.body[0].vellim
         })
         res.status(200)
         res.send('save')
